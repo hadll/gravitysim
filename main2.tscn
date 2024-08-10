@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://w2dj8qmtdojr"]
+
+[ext_resource type="PackedScene" uid="uid://ddyk0tmicv8bt" path="res://point_mass.tscn" id="1_lsc8n"]
+[ext_resource type="PackedScene" uid="uid://c1yp5rebujg0h" path="res://mass_registry.tscn" id="2_8hy4y"]
+
+[node name="Main2" type="Node2D"]
+
+[node name="PointMass2" parent="." instance=ExtResource("1_lsc8n")]
+position = Vector2(800, 209)
+
+[node name="MassRegistry" parent="." instance=ExtResource("2_8hy4y")]
+unique_name_in_owner = true
+
+[node name="PointMass3" parent="." instance=ExtResource("1_lsc8n")]
+position = Vector2(811, 434)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer"]
+position = Vector2(573, 318)
+color = Color(0, 1, 0, 1)
+
+[node name="PointMass" parent="CanvasLayer" instance=ExtResource("1_lsc8n")]
+position = Vector2(573, 318)
+
+[editable path="CanvasLayer/PointMass"]

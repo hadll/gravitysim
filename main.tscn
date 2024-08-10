@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://11f2pbhcfup"]
+
+[ext_resource type="PackedScene" uid="uid://ddyk0tmicv8bt" path="res://point_mass.tscn" id="1_v4w1q"]
+[ext_resource type="PackedScene" uid="uid://c1yp5rebujg0h" path="res://mass_registry.tscn" id="2_hm3ej"]
+[ext_resource type="Script" path="res://camera.gd" id="3_yh38b"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PointMass" parent="." instance=ExtResource("1_v4w1q")]
+position = Vector2(906, 581)
+
+[node name="MassRegistry" parent="." instance=ExtResource("2_hm3ej")]
+unique_name_in_owner = true
+z_index = 1
+
+[node name="PointMass2" parent="." instance=ExtResource("1_v4w1q")]
+position = Vector2(251, 168)
+
+[node name="PointMass3" parent="." instance=ExtResource("1_v4w1q")]
+position = Vector2(664, 231)
+
+[node name="PointMass4" parent="." instance=ExtResource("1_v4w1q")]
+position = Vector2(322, 367)
+
+[node name="PointMass5" parent="." instance=ExtResource("1_v4w1q")]
+position = Vector2(559, 526)
+
+[node name="PointMass6" parent="." instance=ExtResource("1_v4w1q")]
+position = Vector2(121, 560)
+
+[node name="PointMass7" parent="." instance=ExtResource("1_v4w1q")]
+position = Vector2(109, 390)
+
+[node name="PointMass8" parent="." instance=ExtResource("1_v4w1q")]
+position = Vector2(435, 217)
+
+[node name="PointMass9" parent="." instance=ExtResource("1_v4w1q")]
+position = Vector2(702, 389)
+
+[node name="PointMass10" parent="." instance=ExtResource("1_v4w1q")]
+position = Vector2(678, 106)
+
+[node name="PointMass11" parent="." instance=ExtResource("1_v4w1q")]
+position = Vector2(907, 292)
+
+[node name="PointMass12" parent="." instance=ExtResource("1_v4w1q")]
+position = Vector2(565, 325)
+frozen = true
+radius = 50
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(664, 231)
+script = ExtResource("3_yh38b")
