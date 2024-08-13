@@ -24,3 +24,4 @@ func _input(event: InputEvent) -> void:
 			var zoom_pos = get_local_mouse_position()
 			zoom *= 0.95
 			print(zoom_pos)
+		$UI.scale = Vector2(pow(zoom.x,-1),pow(zoom.y,-1))

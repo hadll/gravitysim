@@ -20,6 +20,8 @@ func MassRatio(object_one, object_two):
 	return object_two.mass/(object_one.mass + object_two.mass)
 
 func _process(delta: float) -> void:
+	if not %TimeController.playing:
+		return
 	for instance in instances:
 		instance.position += instance.velocity
 		latest_collisions[instance] = null

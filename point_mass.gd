@@ -18,7 +18,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if frozen:
+	if frozen or not %TimeController.playing:
 		return
 	var pull_vector = Vector2.ZERO
 	for other_instance in %MassRegistry.instances:

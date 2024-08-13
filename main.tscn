@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://11f2pbhcfup"]
+[gd_scene load_steps=5 format=3 uid="uid://11f2pbhcfup"]
 
 [ext_resource type="PackedScene" uid="uid://ddyk0tmicv8bt" path="res://point_mass.tscn" id="1_v4w1q"]
 [ext_resource type="PackedScene" uid="uid://c1yp5rebujg0h" path="res://mass_registry.tscn" id="2_hm3ej"]
 [ext_resource type="Script" path="res://camera.gd" id="3_yh38b"]
+[ext_resource type="Script" path="res://time_controller.gd" id="4_pyuvr"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -49,5 +50,69 @@ frozen = true
 radius = 50
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(664, 231)
+position = Vector2(0, -2)
+anchor_mode = 0
 script = ExtResource("3_yh38b")
+
+[node name="UI" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="PanelContainer" parent="Camera2D/UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera2D/UI/Control"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Container" type="Control" parent="Camera2D/UI/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="Camera2D/UI/Control/MarginContainer/Container"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Reset"
+
+[node name="CenterContainer" type="CenterContainer" parent="Camera2D/UI/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/UI/Control/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="PauseButton" type="Button" parent="Camera2D/UI/Control/MarginContainer/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.298039)
+layout_mode = 2
+text = "Pause"
+
+[node name="PlayButton" type="Button" parent="Camera2D/UI/Control/MarginContainer/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 2
+text = "Play"
+
+[node name="TimeController" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_pyuvr")
+
+[connection signal="pressed" from="Camera2D/UI/Control/MarginContainer/Container/ResetButton" to="TimeController" method="_on_reset_pressed"]
+[connection signal="pressed" from="Camera2D/UI/Control/MarginContainer/CenterContainer/HBoxContainer/PauseButton" to="TimeController" method="_on_pause_pressed"]
+[connection signal="pressed" from="Camera2D/UI/Control/MarginContainer/CenterContainer/HBoxContainer/PlayButton" to="TimeController" method="_on_play_pressed"]
